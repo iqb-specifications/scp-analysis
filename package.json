@@ -6,7 +6,7 @@
   "scripts": {
     "validate-schema": "test-schema",
     "async_generate": "ag ./make_doc/asyncapi.yaml @asyncapi/html-template --param config=make_doc/asyncapi.config.json -o ./public --force-write",
-    "generate_docs": "npm run async-generate && cat make_doc/add.css >> ./public/css/global.min.css"
+    "generate_docs": "npm run async_generate && cat make_doc/add.css >> ./public/css/global.min.css"
   },
   "repository": {
     "type": "git",
