@@ -1,0 +1,267 @@
+{
+  "$id": "scp-analysis@0.1",
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Survey output analysis",
+  "description": "Specification for processing survey output.",
+  "type": "object",
+  "properties": {
+    "packageId": {
+      "description": "Identifier for the survey content package",
+      "type": "string"
+    },
+    "version": {
+      "description": "Package Version in SemVer format.",
+      "type": "string"
+    },
+    "name": {
+      "$ref": "#/$defs/languageTaggedText"
+    },
+    "description": {
+      "$ref": "#/$defs/languageTaggedText"
+    },
+    "maintainerName": {
+      "description": "Name of the person or institution responsable for creating and maintaining",
+      "type": "string",
+      "examples": [
+        "IQB - Institut zur Qualitätsentwicklung im Bildungswesen"
+      ]
+    },
+    "maintainerUrl": {
+      "description": "Url of maintainer to get more information or to get in contact",
+      "type": "string",
+      "examples": [
+        "https://www.iqb.hu-berlin.de/tba"
+      ]
+    },
+    "status": {
+      "description": "Describes the progress of development and visibility issues. During development, version suffixes may be used like 'beta', 'rc' etc.",
+      "type": "string",
+      "enum": [
+        "IN_DEVELOPMENT",
+        "DISCONTINUED",
+        "RELEASED_PUBLIC",
+        "RELEASED_CONFIDENTIAL"
+      ],
+      "default": "IN_DEVELOPMENT"
+    },
+    "metadata": {
+      "$ref": "#/$defs/metadata"
+    },
+    "surveyParts": {
+      "description": "Groups of instruments, administrated the same way or at the same time.",
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/surveyPart"
+      },
+      "minItems": 1
+    }
+  },
+  "required": [
+    "packageId",
+    "packageVersion",
+    "packageName"
+  ],
+  "additionalProperties": false,
+  "$defs": {
+    "languageTaggedText": {
+      "description": "Language tagged text",
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "lang": {
+            "description": "ISO-language code",
+            "type": "string",
+            "minLength": 1,
+            "pattern": "^[a-z]{2}$"
+          },
+          "value": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "lang",
+          "value"
+        ],
+        "additionalProperties": false
+      },
+      "minItems": 1
+    },
+    "languageTaggedObjectRef": {
+      "description": "Variants of the same object in different languages",
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "description": "id/path to the object, used as reference",
+            "type": "string"
+          },
+          "lang": {
+            "type": "string",
+            "minLength": 1,
+            "description": "ISO-language code",
+            "pattern": "^[a-z]{2}$"
+          },
+          "label": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "id",
+          "lang",
+          "label"
+        ],
+        "additionalProperties": false
+      },
+      "minItems": 1
+    },
+    "metadata": {
+      "$ref": "https://w3id.org/iqb/spec/metadata-values/3.0"
+    },
+    "instrument": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "description": "Identifier for the instrument",
+          "type": "string"
+        },
+        "name": {
+          "$ref": "#/$defs/languageTaggedText"
+        },
+        "metadata": {
+          "$ref": "#/$defs/metadata"
+        },
+        "testcenterBooklet": {
+          "description": "If part of TBA, this id refers to an XML definition used to run the instrument in IQB-Testcenter",
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "order": {
+                "description": "Default sorting is alpha-numeric.",
+                "type": "integer",
+                "minimum": 0,
+                "default": 0
+              },
+              "file": {
+                "description": "All language variants of the same booklet XML",
+                "type": "array",
+                "items": {
+                  "$ref": "#/$defs/languageTaggedObjectRef"
+                },
+                "minItems": 1
+              }
+            },
+            "required": [
+              "file"
+            ],
+            "additionalProperties": false
+          },
+          "minItems": 1
+        },
+        "handOutForTestTaker": {
+          "description": "All documents must be presented to the test taker (online or print-out).",
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "order": {
+                "description": "Default sorting is alpha-numeric.",
+                "type": "integer",
+                "minimum": 0,
+                "default": 0
+              },
+              "asPrintOut": {
+                "type": "boolean",
+                "default": false
+              },
+              "file": {
+                "description": "All language variants of the same hand-out",
+                "type": "array",
+                "items": {
+                  "$ref": "#/$defs/languageTaggedObjectRef"
+                },
+                "minItems": 1
+              }
+            },
+            "required": [
+              "file"
+            ],
+            "additionalProperties": false
+          },
+          "minItems": 1
+        },
+        "handOutForTestProctor": {
+          "description": "All documents must be presented to the test proctor (online or print-out).",
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "order": {
+                "description": "Default sorting is alpha-numeric.",
+                "type": "integer",
+                "minimum": 0,
+                "default": 0
+              },
+              "asPrintOut": {
+                "type": "boolean",
+                "default": false
+              },
+              "file": {
+                "description": "All language variants of the same hand-out",
+                "type": "array",
+                "items": {
+                  "$ref": "#/$defs/languageTaggedObjectRef"
+                },
+                "minItems": 1
+              }
+            },
+            "required": [
+              "file"
+            ],
+            "additionalProperties": false
+          },
+          "minItems": 1
+        }
+      },
+      "required": [
+        "id", "name"
+      ],
+      "additionalProperties": false
+    },
+    "surveyPart": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Identifier for the survey part"
+        },
+        "name": {
+          "$ref": "#/$defs/languageTaggedText"
+        },
+        "description": {
+          "$ref": "#/$defs/languageTaggedText"
+        },
+        "metadata": {
+          "$ref": "#/$defs/metadata"
+        },
+        "instruments": {
+          "description": "All instruments for the survey part, online or to hand out",
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/instrument"
+          },
+          "minItems": 1
+        }
+      },
+      "required": [
+        "id", "name", "instruments"
+      ],
+      "additionalProperties": false
+    }
+  }
+}

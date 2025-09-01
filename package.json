@@ -1,0 +1,24 @@
+{
+  "name": "@iqbspecs/scp-analysis",
+  "author": "IQB - Institut zur Qualitätsentwicklung im Bildungswesen",
+  "license": "CC0-1.0",
+  "description": "Specification for processing survey output.",
+  "scripts": {
+    "validate-schema": "test-schema",
+    "async_generate": "ag ./make_doc/asyncapi.yaml @asyncapi/html-template --param config=make_doc/asyncapi.config.json -o ./public --force-write",
+    "generate_docs": "npm run async-generate && cat make_doc/add.css >> ./public/css/global.min.css"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/iqb-specifications/scp-analysis.git"
+  },
+  "bugs": {
+    "url": "https://github.com/iqb-specifications/scp-analysis/issues"
+  },
+  "homepage": "https://github.com/iqb-specifications/scp-analysis#readme",
+  "devDependencies": {
+    "@iqbspecs/validate-json": "^0.3.0",
+    "@asyncapi/generator": "2.4.1",
+    "@asyncapi/html-template": "3.1.0"
+  }
+}
