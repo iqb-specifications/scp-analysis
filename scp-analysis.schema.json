@@ -112,15 +112,10 @@
               "sourceVariable": {
                 "description": "Refers to the variable providing its score as item value",
                 "type": "string"
-              },
-              "weight": {
-                "description": "Modifies the item value before processing - works as a multiplier.",
-                "type": "numeric",
-                "default": 1
               }
             },
             "required": [
-              "file"
+              "moduleId", "unitId", "sourceVariable"
             ],
             "additionalProperties": false
           },
