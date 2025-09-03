@@ -59,34 +59,7 @@
           "itemValue",
           "status"
         ],
-        "additionalItems": false,
-        "examples": [
-          [
-            {
-              "itemValue": -99,
-              "status": [
-                "UNSET",
-                "NOT_REACHED",
-                "DISPLAYED",
-                "VALUE_CHANGED",
-                "DERIVE_ERROR"
-              ]
-            },
-            {
-              "itemValue": 0,
-              "status": [
-                "NO_CODING",
-                "INVALID",
-                "CODING_INCOMPLETE",
-                "CODING_ERROR",
-                "PARTLY_DISPLAYED",
-                "DERIVE_PENDING",
-                "INTENDED_INCOMPLETE",
-                "CODE_SELECTION_PENDING"
-              ]
-            }
-          ]
-        ]
+        "additionalItems": false
       }
     },
     "itemScales": {
