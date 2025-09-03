@@ -59,7 +59,7 @@
           "itemValue",
           "status"
         ],
-        "additionalItems": false
+        "additionalProperties": false
       }
     },
     "itemScales": {
@@ -113,9 +113,9 @@
                 }
               },
               "required": [
-                "itemValue"
+                "itemId"
               ],
-              "additionalItems": false
+              "additionalProperties": false
             },
             "minItems": 1
           }
@@ -145,12 +145,16 @@
           "description": {
             "$ref": "#/$defs/languageTaggedText"
           },
+          "source": {
+            "description": "Id of the scale providing the value for this derived scale",
+            "type": "string"
+          },
           "preProcessing": {
             "description": "Modifies the value before mapping.",
             "type": "string",
             "enum": [
               "TO_LOWER_CASE",
-              "TO_INTEGER"
+              "ROUND_TO_INTEGER"
             ]
           },
           "mappings": {
@@ -184,10 +188,10 @@
                   "type": "string"
                 },
                 "valueLabel": {
-                  "type": "string"
+                  "$ref": "#/$defs/languageTaggedText"
                 },
                 "valueDescription": {
-                  "type": "string"
+                  "$ref": "#/$defs/languageTaggedText"
                 }
               },
               "required": [
@@ -205,15 +209,16 @@
             "default": "0"
           },
           "elseValueLabel": {
-            "type": "string"
+            "$ref": "#/$defs/languageTaggedText"
           },
           "elseValueDescription": {
-            "type": "string"
+            "$ref": "#/$defs/languageTaggedText"
           }
         },
         "required": [
           "id",
           "name",
+          "source",
           "mappings"
         ],
         "additionalProperties": false

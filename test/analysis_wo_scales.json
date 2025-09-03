@@ -1,0 +1,108 @@
+{
+  "id": "IQBSCP-A-923",
+  "name": [
+    {
+      "lang": "de",
+      "value": "Analyse-Schema für VERA2027-Französisch"
+    }
+  ],
+  "description": [
+    {
+      "lang": "de",
+      "value": "Dieses Analyse-Schema deckt alle Testhefte ab, die Französisch-Kompetenzen erheben."
+    }
+  ],
+  "items": [
+    {
+      "id": "F9283a",
+      "name": [
+        {
+          "lang": "de",
+          "value": "Teilaufgabe A"
+        }
+      ],
+      "sources": [
+        {
+          "moduleId": "F4",
+          "unitId": "F9283",
+          "sourceVariable": "a3"
+        },
+        {
+          "moduleId": "F6",
+          "unitId": "F9283",
+          "unitAlias": "F9283_2",
+          "sourceVariable": "a3"
+        }
+      ]
+    },
+    {
+      "id": "F9283b",
+      "name": [
+        {
+          "lang": "de",
+          "value": "Teilaufgabe B"
+        }
+      ],
+      "sources": [
+        {
+          "moduleId": "F4",
+          "unitId": "F9283",
+          "sourceVariable": "b"
+        },
+        {
+          "moduleId": "F6",
+          "unitId": "F9283",
+          "unitAlias": "F9283_2",
+          "sourceVariable": "b"
+        }
+      ]
+    },
+    {
+      "id": "F9283c",
+      "name": [
+        {
+          "lang": "de",
+          "value": "Teilaufgabe C"
+        }
+      ],
+      "sources": [
+        {
+          "moduleId": "F4",
+          "unitId": "F9283",
+          "sourceVariable": "c_3"
+        },
+        {
+          "moduleId": "F6",
+          "unitId": "F9283",
+          "unitAlias": "F9283_2",
+          "sourceVariable": "c_3"
+        }
+      ]
+    }
+  ],
+  "statusMapping": [
+    {
+      "itemValue": -99,
+      "status": [
+        "UNSET",
+        "NOT_REACHED",
+        "DISPLAYED",
+        "VALUE_CHANGED",
+        "DERIVE_ERROR"
+      ]
+    },
+    {
+      "itemValue": 0,
+      "status": [
+        "NO_CODING",
+        "INVALID",
+        "CODING_INCOMPLETE",
+        "CODING_ERROR",
+        "PARTLY_DISPLAYED",
+        "DERIVE_PENDING",
+        "INTENDED_INCOMPLETE",
+        "CODE_SELECTION_PENDING"
+      ]
+    }
+  ]
+}
